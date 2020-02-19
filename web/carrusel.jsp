@@ -4,8 +4,9 @@
     Author     : DAW203
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -18,18 +19,21 @@
         <title>Carrusel</title>
     </head>
     <body>
-        <h1>Imagenes</h1>
+        <h1>Nuestras imágenes</h1>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://mouse.latercera.com/wp-content/uploads/2017/09/rick-sanchez-broma-900x600.png" class="d-block w-100" alt="...">
+                <% ArrayList<String> imagenes
+                            = (ArrayList<String>) request.getAttribute("imagenes");
+                    for (int i = 0; i < imagenes.size(); i++) {
+                        String cadenaActive = "";
+                        if (i == 0) {
+                            cadenaActive = " active";
+                        }
+                %>
+                <div class="carousel-item <%=cadenaActive%>">
+                    <img src="<%=imagenes.get(i)%>" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
-                    <img src="https://cdn-www.konbini.com/mx/files/2019/09/rick-feat-1.jpg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://www.korosenai.es/wp-content/uploads/2018/02/sr-ojete-sucio-real.jpg" class="d-block w-100" alt="...">
-                </div>
+                <%}%>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,6 +44,9 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
+
+
+
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

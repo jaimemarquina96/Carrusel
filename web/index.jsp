@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="carrusel.jsp">Arrancar</a>
+        <a href="carrusel">Arrancar</a>
     </body>
 </html>
